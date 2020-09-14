@@ -1,0 +1,27 @@
+server:
+  port: 9086
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/statistics?useSSL=false&serverTimezone=UTC
+    username: root
+    password: admin
+
+services:
+  country: https://api.ip2country.info/
+  exchange: https://api.exchangeratesapi.io/latest
+  detail-country: https://restcountries.eu/rest/v2/
+
+Feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
